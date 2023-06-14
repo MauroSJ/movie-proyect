@@ -4,6 +4,7 @@ import axios from 'axios'
 import CardMovie from '../../common/cardMovie/CardMovie'
 import styles from "./Home.module.css"
 import Header from '../../common/header/Header'
+import confetti from "canvas-confetti"
 
 const Home = () => {
 
@@ -21,6 +22,20 @@ const Home = () => {
   }, [dispatchLike])
 
   const handleLike = (movie)=>{
+
+    if(!movie.isLiked){
+      confetti({
+        zIndex: 999,
+        particleCount: 100,
+        spread: 160,
+        angle: -100,
+        origin: {
+          x: 0.5,
+          y: 0
+        }  
+      })
+    }
+
     axios.patch(`http://localhost:4000/movies/${movie.id}`,{isLiked: !movie.isLiked})
     .then((resp)=>setDispatchLike(true))
     .catch((err)=>console.log(err))
