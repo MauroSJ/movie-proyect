@@ -5,12 +5,15 @@ import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
+import CardActions from '@mui/material/CardActions';
+import IconButton from '@mui/material/IconButton';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
-const CardMovie = ({movie}) => {
+const CardMovie = ({movie, handleLike}) => {
 
   return (
     <>
-      <Card sx={{ maxWidth: 345 }}>
+      <Card sx={{ width: 300, height: 500 }}>
         <CardHeader
           title= {movie.name}
           subheader= {movie.createdAt}
@@ -21,11 +24,16 @@ const CardMovie = ({movie}) => {
           image= {movie.img}
           alt= {movie.name}
         />
-        <CardContent>
+        <CardContent sx={{height: 150 }}>
           <Typography variant="body2" color="text.secondary">
             {movie.description}
           </Typography>
         </CardContent>
+        <CardActions disableSpacing>
+          <IconButton aria-label="add to favorites">
+          </IconButton>
+          <FavoriteIcon color={movie.isLiked ? "error" : "disabled"} onClick={()=>{handleLike(movie)}}/>
+        </CardActions>
       </Card>
     </>
   )
