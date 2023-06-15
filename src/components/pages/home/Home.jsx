@@ -13,6 +13,7 @@ const Home = () => {
   const [movies, setMovies] =useState([])
   const [dispatchLike, setDispatchLike] =useState([false])
   const [favorite, setFavorite] =useState(false)
+  const [isCreateMovie, setIsCreateMovie] =useState(false)
 
   useEffect(()=>{
     axios.get("http://localhost:4000/movies")
@@ -20,8 +21,9 @@ const Home = () => {
       .catch((err)=> console.log(err))
 
       setDispatchLike(false)
+      setIsCreateMovie(false)
       
-  }, [dispatchLike])
+  }, [dispatchLike, isCreateMovie])
 
   const handleLike = (movie)=>{
 
@@ -55,7 +57,7 @@ const Home = () => {
     <>
       <Header setFavorite={setFavorite}/>
       <Button onClick={handleOpen} >Añadir película</Button>
-      <CreateMovieModal open={open} handleClose={handleClose}/>
+      <CreateMovieModal open={open} handleClose={handleClose} setIsCreateMovie={setIsCreateMovie}/>
       <div className={styles.containerCards}>
         {
           !favorite ?
