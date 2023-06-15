@@ -5,6 +5,8 @@ import CardMovie from '../../common/cardMovie/CardMovie'
 import styles from "./Home.module.css"
 import Header from '../../common/header/Header'
 import confetti from "canvas-confetti"
+import Button from '@mui/material/Button';
+import CreateMovieModal from '../../common/createMovieModal/CreateMovieModal'
 
 const Home = () => {
 
@@ -43,10 +45,17 @@ const Home = () => {
 
   const moviesFilter = movies.filter(movie => movie.isLiked)
 
+  
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
 
   return (
     <>
       <Header setFavorite={setFavorite}/>
+      <Button onClick={handleOpen} >Añadir película</Button>
+      <CreateMovieModal open={open} handleClose={handleClose}/>
       <div className={styles.containerCards}>
         {
           !favorite ?
@@ -63,6 +72,7 @@ const Home = () => {
           })
         }
       </div>
+      
     </>
   )
 }
