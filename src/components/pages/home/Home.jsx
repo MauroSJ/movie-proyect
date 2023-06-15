@@ -14,6 +14,7 @@ const Home = () => {
   const [dispatchLike, setDispatchLike] =useState([false])
   const [favorite, setFavorite] =useState(false)
   const [isCreateMovie, setIsCreateMovie] =useState(false)
+  const [isDeleteMovie, setIsDeleteMovie] =useState(false)
 
   useEffect(()=>{
     axios.get("http://localhost:4000/movies")
@@ -22,8 +23,9 @@ const Home = () => {
 
       setDispatchLike(false)
       setIsCreateMovie(false)
+      setIsDeleteMovie(false)
       
-  }, [dispatchLike, isCreateMovie])
+  }, [dispatchLike, isCreateMovie, isDeleteMovie])
 
   const handleLike = (movie)=>{
 
@@ -52,6 +54,15 @@ const Home = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  const deleteMovieById = (id)=>{
+    
+    axios.delete(`http://localhost:4000/movies/${id}`)
+    .then(resp=>{
+      setIsDeleteMovie(true)
+    })
+    .catch(error=>console.log(error))
+  }
+
 
   return (
     <>
@@ -63,12 +74,12 @@ const Home = () => {
           !favorite ?
           movies.map((movie)=>{
             return(
-              <CardMovie movie={movie}  key={movie.id} handleLike={handleLike}/>
+              <CardMovie deleteMovieById={deleteMovieById} movie={movie}  key={movie.id} handleLike={handleLike}/>
               
             )
           }) :  moviesFilter.map((movie)=>{
             return(
-              <CardMovie movie={movie}  key={movie.id} handleLike={handleLike}/>
+              <CardMovie deleteMovieById={deleteMovieById} movie={movie}  key={movie.id} handleLike={handleLike}/>
               
             )
           })

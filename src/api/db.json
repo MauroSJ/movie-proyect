@@ -14,7 +14,7 @@
       "description": "Frank, un militar ciego, emprende un viaje a Nueva York con un joven recluta que le cuida durante Acción de Gracias. Frank está dispuesto a matar a un antiguo compañero de armas, y después, suicidarse.",
       "img": "https://www.nosolocine.net/wp-content/uploads/2021/05/Perfume-Scent-of-a-Woman-1024x576.jpg",
       "createdAt": "18 de febrero de 1993",
-      "isLiked": false
+      "isLiked": true
     },
     {
       "id": 3,
@@ -23,14 +23,6 @@
       "img": "https://www.cronista.com/files/image/488/488121/636e67d2c55ba.jpg",
       "createdAt": "29 de noviembre de 2001",
       "isLiked": true
-    },
-    {
-      "name": "Cuestion de Tiempo",
-      "description": "Cuando Tim Lake cumple 21 años, su padre le dice un secreto: los hombres de su familia pueden viajar por el tiempo. ",
-      "img": "https://images-na.ssl-images-amazon.com/images/S/pv-target-images/060a30006eab95c602e72dd634937d5b8d231b2a45811e4fd4245f9a3281aaa3._UY500_UX667_RI_TTW_.jpg",
-      "createdAt": "7 de noviembre de 2013",
-      "isLiked": false,
-      "id": 4
     }
   ]
 }
